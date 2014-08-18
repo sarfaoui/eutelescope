@@ -23,6 +23,7 @@ Version: $Id: hitmaker-tmp.xml,v 1.3 2009-06-04 17:19:01 bulgheroni Exp $
       <!--processor name="Mimosa26EUTelAutoPedestalNoiseProcessor"-->
       <!-- processor name="GeoSelection"/ -->
       <processor name="HitMakerM26"/>
+      <processor name="HitMakerTP3"/>
       <processor name="PreAligner"/> 
       <processor name="Correlator"/> 
       <processor name="Save"/>
@@ -109,6 +110,30 @@ NxMPixel: using a subframe of the cluster N x M pixels wide (set NxMPixel too).-
   <!--The submatrix size to be used for CoGAlgorithm = "NxMPixel"-->
   <parameter name="NxMPixel" type="IntVec"> 3 3 </parameter>
 </processor>
+
+ <processor name="HitMakerTP3" type="EUTelProcessorHitMaker">
+ <!--EUTelHitMaker is responsible to translate cluster centers from the local frame of reference to the external frame of reference using the GEAR geometry description-->
+  <!--Cluster (pulse) collection name-->
+  <parameter name="PulseCollectionName" type="string" lcioInType="TrackerPulse"> cluster_timepix3 </parameter>
+  <!--Hit collection name-->
+  <parameter name="HitCollectionName" type="string" lcioOutType="TrackerHit"> hit </parameter>
+  <!--Select here how the center of gravity should be calculated.
+FULL: using the full cluster
+NPixel: using only the first N most significant pixels (set NPixel too)
+NxMPixel: using a subframe of the cluster N x M pixels wide (set NxMPixel too).-->
+  <parameter name="CoGAlgorithm" type="string" value="FULL"/>
+  <!--If true a 3D histo will be filled. It may require large memory-->
+  <parameter name="Enable3DHisto" type="bool" value="false"/>
+  <!--The name of the collections containing the eta function (x and y respectively)-->
+  <!--parameter name="EtaCollectionName" type="StringVec"> xEta yEta </parameter-->
+  <!--Enable or disable eta correction-->
+  <parameter name="EtaSwitch" type="bool" value="false"/>
+  <!--The number of most significant pixels to be used if CoGAlgorithm is "NPixel"-->
+  <!--parameter name="NPixel" type="int" value="9"/-->
+  <!--The submatrix size to be used for CoGAlgorithm = "NxMPixel"-->
+  <parameter name="NxMPixel" type="IntVec"> 3 3 </parameter>
+</processor>
+
 
 
  <processor name="Save" type="EUTelOutputProcessor">

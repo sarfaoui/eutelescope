@@ -28,6 +28,8 @@ Version: $Id: fitter-tmp.xml,v 1.7 2009-08-01 13:59:45 bulgheroni Exp $
       <!-- processor name="DUTHisto"/ -->
       <!-- processor name="NTuple"/-->
       <!-- group name="TelDUTHisto"/-->
+      <processor name="APIXTbTrack"/>
+      <processor name="MyEUTelUtilityPrintEventNumber"/>
       <processor name="Save"/>
    </execute>
 
@@ -217,5 +219,47 @@ Version: $Id: fitter-tmp.xml,v 1.7 2009-08-01 13:59:45 bulgheroni Exp $
   <!--will split output file if size in kB exceeds given value - doesn't work with APPEND and NEW-->
   <parameter name="SplitFileSizekB" type="int" value=""/>
 </processor>
+
+
+  
+ <processor name="APIXTbTrack" type="EUTelAPIXTbTrackTuple">
+    <parameter name="OutputPath" type ="string" value="@HistoPath@/tbtrack@Output@.root"/>
+    <!--Name of the input Track collection-->
+    <parameter name="InputCollectionName" type="string" lcioInType="Track"> fittracks </parameter>
+    <!--Name of the input cluster collections-->
+    <parameter name="InputTrackerHitCollectionName" type="string" value="alignedHit"/>  
+    <parameter name="InputDutPulseCollectionName" type="string" value="cluster_timepix3"/>
+    <parameter name="InputTelPulseCollectionName" type="string" value="cluster_m26"/>
+    <!--Name of the zs hit collection-->
+    <parameter name="TelZsColName" type="string" value="zsdata_m26"/>
+    <parameter name="DutZsColName" type="string" value="zsdata_timepix3"/>
+    <!-- Alignment constants-->
+    <parameter name="AlignmentCollectionNames"> prealign alignment  </parameter>
+    <parameter name="DoScales" type="bool" value="false"/>
+    <parameter name="ReferenceCollection" type="string" > refhit </parameter>
+    <parameter name="ApplyToReferenceCollection" type="bool" value="1"/>
+    <parameter name="doReverseAlign" type="bool" value="true"/>    
+
+</processor>
+   
+  
+
+
+
+
+
+
+ <processor name="MyEUTelUtilityPrintEventNumber" type="EUTelUtilityPrintEventNumber">
+ <!--EUTelUtilityPrintEventNumber prints event number to screen depending on the verbosity level-->
+  <!--Print event number for every n-th event-->
+  <parameter name="EveryNEvents" type="int" value="1000"/>
+  <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
+  <!--parameter name="Verbosity" type="string" value=""/-->
+  <!--print the event timestamp as read from LCIO-->
+  <parameter name="printTimestamp" type="bool" value="false"/>
+</processor>
+
+
+
    
 </marlin>
