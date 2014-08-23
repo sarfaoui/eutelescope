@@ -224,15 +224,19 @@ Version: $Id: fitter-tmp.xml,v 1.7 2009-08-01 13:59:45 bulgheroni Exp $
   
  <processor name="APIXTbTrack" type="EUTelAPIXTbTrackTuple">
     <parameter name="OutputPath" type ="string" value="@HistoPath@/tbtrack@Output@.root"/>
+    
+    
     <!--Name of the input Track collection-->
-    <parameter name="InputCollectionName" type="string" lcioInType="Track"> fittracks </parameter>
+    <parameter name="InputTrackCollectionName" type="string" lcioInType="Track"> track </parameter>
+    
+    
     <!--Name of the input cluster collections-->
-    <parameter name="InputTrackerHitCollectionName" type="string" value="alignedHit"/>  
-    <parameter name="InputDutPulseCollectionName" type="string" value="cluster_timepix3"/>
-    <parameter name="InputTelPulseCollectionName" type="string" value="cluster_m26"/>
-    <!--Name of the zs hit collection-->
-    <parameter name="TelZsColName" type="string" value="zsdata_m26"/>
+    <parameter name="InputTrackerHitCollectionName" type="string" value="fithits"/>  
+    
+   
     <parameter name="DutZsColName" type="string" value="zsdata_timepix3"/>
+    
+    
     <!-- Alignment constants-->
     <parameter name="AlignmentCollectionNames"> prealign alignment  </parameter>
     <parameter name="DoScales" type="bool" value="false"/>
