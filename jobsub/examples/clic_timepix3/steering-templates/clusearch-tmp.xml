@@ -22,12 +22,10 @@ Version: $Id: clusearch-tmp.xml,v 1.9 2009-08-01 10:41:44 bulgheroni Exp $
     <processor name="AIDA"/>
       <processor name="Mimosa26EUTelAutoPedestalNoiseProcessor"/>
       <processor name="TP3EUTelAutoPedestalNoiseProcessor"/>
-
       <processor name="LoadHotPixelDB"/>
       <processor name="Clustering"/>
       <processor name="TP3Clustering"/>
-      
-      <--processor name="Correlator"/>
+      <processor name="Correlator"/>
       <processor name="Save"/>
       <processor name="MyEUTelUtilityPrintEventNumber"/>
   </execute>
@@ -81,7 +79,7 @@ Version: $Id: clusearch-tmp.xml,v 1.9 2009-08-01 10:41:44 bulgheroni Exp $
  <!--EUTelAutoPedestalNoiseProcessor produces initial pedestal / noise / status with user provided values-->
   <!--Noise local collection-->
   <parameter name="NoiseCollectionName" type="string" lcioOutType="TrackerData"> tp3_noise </parameter>
-  <!--Pedestal local collection--
+  <!--Pedestal local collection-->
   <parameter name="PedestalCollectionName" type="string" lcioOutType="TrackerData"> tp3_pedestal </parameter>
   <!--Pixel status collection-->
   <parameter name="StatusCollectionName" type="string" lcioOutType="TrackerRawData"> tp3_status </parameter>
@@ -192,7 +190,7 @@ Version: $Id: clusearch-tmp.xml,v 1.9 2009-08-01 10:41:44 bulgheroni Exp $
         HISTOGRAMMING
     -->
     <!--Switch on or off the histogram filling-->
-    <parameter name="HistogramFilling" type="bool" value="false"/>
+    <parameter name="HistogramFilling" type="bool" value="true"/>
     <!--This is the name of the histogram information file-->
     <parameter name="HistoInfoFileName" type="string" value="@HistoInfoPath@/@HistoInfo@"/>
     <!--The list of cluster N to be filled.For example 7 means filling the cluster spectra with the 7 most significant pixels-->

@@ -24,10 +24,6 @@ Version: $Id: fitter-tmp.xml,v 1.7 2009-08-01 13:59:45 bulgheroni Exp $
       <processor name="LoadAlignment"/>
       <processor name="ApplyAlignment"/>
       <processor name="Fitter"/>
-      <!-- processor name="FitterHisto"/ -->
-      <!-- processor name="DUTHisto"/ -->
-      <!-- processor name="NTuple"/-->
-      <!-- group name="TelDUTHisto"/-->
       <processor name="APIXTbTrack"/>
       <processor name="MyEUTelUtilityPrintEventNumber"/>
       <processor name="Save"/>
@@ -224,18 +220,14 @@ Version: $Id: fitter-tmp.xml,v 1.7 2009-08-01 13:59:45 bulgheroni Exp $
   
  <processor name="APIXTbTrack" type="EUTelAPIXTbTrackTuple">
     <parameter name="OutputPath" type ="string" value="@HistoPath@/tbtrack@Output@.root"/>
-    
-    
+        
     <!--Name of the input Track collection-->
     <parameter name="InputTrackCollectionName" type="string" lcioInType="Track"> track </parameter>
-    
-    
+        
     <!--Name of the input cluster collections-->
     <parameter name="InputTrackerHitCollectionName" type="string" value="fithits"/>  
-    
-   
     <parameter name="DutZsColName" type="string" value="zsdata_timepix3"/>
-    
+    <parameter name="DUTIDs" type="int" value="6"/>
     
     <!-- Alignment constants-->
     <parameter name="AlignmentCollectionNames"> prealign alignment  </parameter>
@@ -247,11 +239,6 @@ Version: $Id: fitter-tmp.xml,v 1.7 2009-08-01 13:59:45 bulgheroni Exp $
 </processor>
    
   
-
-
-
-
-
 
  <processor name="MyEUTelUtilityPrintEventNumber" type="EUTelUtilityPrintEventNumber">
  <!--EUTelUtilityPrintEventNumber prints event number to screen depending on the verbosity level-->

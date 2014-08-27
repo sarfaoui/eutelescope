@@ -134,7 +134,7 @@ Version: $Id: converter-tmp.xml,v 1.2 2009-05-14 18:25:21 bulgheroni Exp $
     <parameter name="SensorIDVec" type="IntVec"> 0 1 2 3 4 5</parameter>    
     <!--This float number [0,1] represents the maximum allowed firing frequency
         within the selected number of event per cycle-->
-    <parameter name="MaxAllowedFiringFreq" type="float" value="0.01"/>
+    <parameter name="MaxAllowedFiringFreq" type="float" value="0.001"/>
     <!--The number of events to be considered for each update cycle-->
     <parameter name="NoOfEvents" type="int" value="9999"/>
  </processor>
